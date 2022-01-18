@@ -1,19 +1,21 @@
 import "./topbar.css";
-import { BiBell , BiUser , BiX } from "react-icons/bi";
+import { BiBell, BiUser, BiX } from "react-icons/bi";
+import images from "../../assets/index";
+import { Link } from "react-router-dom";
 const TopBar = () => {
+  const user = true;
   return (
-    <div className="header">
       <div className="navbar">
         <div className="row container d-flex">
           <div className="logo">
-            <img src="" alt="" />
+            <img src={images.logo} alt="" />
           </div>
           <div className="nav-list d-flex">
-            <a href="shop">Shop</a>
-            <a href="/page">Pages</a>
-            <a href="/about">About</a>
-            <a href="/Lookups">Lookups</a>
-            <a href="/">Home</a>
+            <Link to="shop">Shop</Link>
+            <Link to="/page">Pages</Link>
+            <Link to="/about">About</Link>
+            <Link to="/Lookups">Lookups</Link>
+            <Link to="/">Home</Link>
             <div className="colse">
               <BiX />
             </div>
@@ -22,17 +24,20 @@ const TopBar = () => {
             </a>
           </div>
           <div className="icons d-flex">
-            <div className="icon d-flex user-icon">
-              <BiUser />
-            </div>
+            {user && (
+              <Link to="/create">
+              <div className="icon d-flex user-icon">
+                <BiUser />
+              </div>
+              </Link>
+            )}
             <div className="icon d-flex">
-            <BiBell />
+              <BiBell />
               <span></span>
             </div>
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
